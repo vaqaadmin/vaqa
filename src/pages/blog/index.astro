@@ -34,7 +34,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' });
 			style="padding:0 var(--gutter) var(--section-y);border-top:var(--border-hairline) solid var(--border-subtle);"
 		>
 			{posts.length === 0 && (
-				<p style="padding:var(--space-6) 0;color:var(--text-muted);">No posts yet — check back soon.</p>
+				<p style="padding:var(--space-6) 0;color:var(--text-muted);">No posts yet, check back soon.</p>
 			)}
 			{posts.map((post) => (
 				<a

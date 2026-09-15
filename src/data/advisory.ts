@@ -18,7 +18,7 @@ export const advisoryTopics: AdvisoryTopic[] = [
 		title: 'Growth',
 		summary: 'Finding and compounding the levers that actually move the business forward.',
 		description:
-			'I help leadership teams identify the growth levers that matter — acquisition, retention, pricing, expansion — and build the operating rhythm to compound them.',
+			'I help leadership teams identify the growth levers that matter, including acquisition, retention, pricing and expansion, and build the operating rhythm to compound them.',
 	},
 	{
 		slug: 'go-to-market',
@@ -30,7 +30,7 @@ export const advisoryTopics: AdvisoryTopic[] = [
 	{
 		slug: 'ai-implementation',
 		title: 'AI Implementation',
-		summary: 'Practical AI adoption — what to build, what to buy, and what to ignore.',
+		summary: 'Practical AI adoption: what to build, what to buy, and what to ignore.',
 		description:
 			'I advise leadership teams on where AI genuinely changes the economics of a business, and how to implement it practically across product, ops, and go-to-market.',
 	},

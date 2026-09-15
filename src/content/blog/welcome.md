@@ -1,6 +1,6 @@
 ---
 title: "Welcome"
-description: "A placeholder post — first real opinion piece coming soon."
+description: "A placeholder post: first real opinion piece coming soon."
 pubDate: 2026-09-15
 tags: ["placeholder"]
 ---
