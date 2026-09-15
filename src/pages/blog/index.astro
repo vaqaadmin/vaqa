@@ -8,11 +8,36 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 );
 
 const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' });
+
+const schema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+			{ '@type': 'ListItem', position: 2, name: 'Blog', item: new URL('/blog', Astro.site).toString() },
+		],
+	},
+	{
+		'@context': 'https://schema.org',
+		'@type': 'Blog',
+		name: 'Opinions on AI, and everything else',
+		url: new URL('/blog', Astro.site).toString(),
+		author: { '@id': 'https://vaqa.co.uk/#person' },
+		blogPost: posts.map((post) => ({
+			'@type': 'BlogPosting',
+			headline: post.data.title,
+			url: new URL(`/blog/${post.id}`, Astro.site).toString(),
+			datePublished: post.data.pubDate.toISOString(),
+		})),
+	},
+];
 ---
 
 <Layout
 	title="Blog | Tom Batting"
 	description="Opinions on AI, growth, and building businesses from Tom Batting."
+	schema={schema}
 >
 	<main>
 		<section style="background:var(--surface-page);">
@@ -22,6 +47,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' });
 			>
 				<SectionHeading
 					client:load
+					level="h1"
 					eyebrow="Blog"
 					title="Opinions on AI, and everything else"
 					lede="Where I write about what's happening in AI, and other industries I keep an eye on."

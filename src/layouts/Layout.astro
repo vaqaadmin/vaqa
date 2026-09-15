@@ -6,12 +6,57 @@ import Footer from '../components/Footer.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	ogType?: 'website' | 'article';
+	ogImage?: string;
+	publishedTime?: Date;
+	/** Extra JSON-LD objects for this page (e.g. BlogPosting, FAQPage, BreadcrumbList). */
+	schema?: Record<string, unknown>[];
 }
 
 const {
 	title = 'Tom Batting | Board Advisory, Growth & AI Implementation',
 	description = 'Board advisory, growth, go-to-market, AI implementation, operational efficiency, and fundraising advice from Tom Batting.',
+	ogType = 'website',
+	ogImage = '/images/vaqa/og-image.jpg',
+	publishedTime,
+	schema = [],
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const absoluteOgImage = new URL(ogImage, Astro.site);
+
+const siteSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Person',
+			'@id': 'https://vaqa.co.uk/#person',
+			name: 'Tom Batting',
+			url: 'https://vaqa.co.uk',
+			image: 'https://vaqa.co.uk/images/vaqa/portrait/tom-headshot.jpg',
+			jobTitle: 'Founder and Advisor',
+			description:
+				'Forbes 30 Under 30 entrepreneur, founder of Obby and Baluu, founder of FirstMotion, and advisor to founders and leadership teams through VAQA.',
+			email: 'mailto:tom@vaqa.co.uk',
+			worksFor: [
+				{ '@type': 'Organization', name: 'VAQA', url: 'https://vaqa.co.uk' },
+				{ '@type': 'Organization', name: 'FirstMotion', url: 'https://firstmotion.com' },
+			],
+			sameAs: ['https://firstmotion.com'],
+		},
+		{
+			'@type': 'ProfessionalService',
+			'@id': 'https://vaqa.co.uk/#organization',
+			name: 'VAQA',
+			url: 'https://vaqa.co.uk',
+			email: 'tom@vaqa.co.uk',
+			founder: { '@id': 'https://vaqa.co.uk/#person' },
+			areaServed: 'Worldwide',
+			description:
+				'Board advisory, growth, go-to-market, AI implementation, operational efficiency, and finance and fundraising advisory led by Tom Batting.',
+		},
+	],
+};
 ---
 
 <html lang="en">
@@ -21,7 +66,29 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
 		<title>{title}</title>
+
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={absoluteOgImage} />
+		<meta property="og:site_name" content="Tom Batting" />
+		{ogType === 'article' && publishedTime ? (
+			<meta property="article:published_time" content={publishedTime.toISOString()} />
+		) : null}
+		{ogType === 'article' ? <meta property="article:author" content="Tom Batting" /> : null}
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={absoluteOgImage} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
+		{schema.map((item) => (
+			<script type="application/ld+json" set:html={JSON.stringify(item)} />
+		))}
 	</head>
 	<body class="bg-white font-sans text-vaqa-ink antialiased">
 		<Header />

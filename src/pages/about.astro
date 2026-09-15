@@ -2,11 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import { SectionHeading } from '../design-system/components/core/SectionHeading.jsx';
 import { MediaFrame } from '../design-system/components/content/MediaFrame.jsx';
+
+const schema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+			{ '@type': 'ListItem', position: 2, name: 'About', item: new URL('/about', Astro.site).toString() },
+		],
+	},
+];
 ---
 
 <Layout
 	title="About | Tom Batting"
 	description="Tom Batting is a Forbes 30 Under 30 entrepreneur, founder of Obby and Baluu, and advisor to founders and leadership teams."
+	schema={schema}
 >
 	<main>
 		<section style="background:var(--surface-page);">
@@ -15,7 +27,7 @@ import { MediaFrame } from '../design-system/components/content/MediaFrame.jsx';
 				style="padding:var(--space-10) var(--gutter) var(--section-y);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));"
 			>
 				<div style="max-width:var(--container-narrow);">
-					<SectionHeading client:load eyebrow="About" title="About Tom" />
+					<SectionHeading client:load level="h1" eyebrow="About" title="About Tom" />
 					<div
 						class="mt-8 flex flex-col gap-6"
 						style="font-size:var(--text-body-lg);font-weight:var(--weight-light);line-height:var(--leading-loose);color:var(--text-secondary);"
