@@ -6,6 +6,8 @@ import { Button } from '../design-system/components/core/Button.jsx';
 import { Eyebrow } from '../design-system/components/core/Eyebrow.jsx';
 import { TopicCard } from '../design-system/components/content/TopicCard.jsx';
 import { Testimonial } from '../design-system/components/content/Testimonial.jsx';
+import { MediaFrame } from '../design-system/components/content/MediaFrame.jsx';
+import { ValueCard } from '../design-system/components/content/ValueCard.jsx';
 
 const testimonials = [
 	{
@@ -13,18 +15,42 @@ const testimonials = [
 			"Tom has been a game changer for TYX Studios! Since working with him and his partners, we've seen a remarkable boost in visibility and a steady flow of high-intent enquiries leading to some amazing customers.",
 		name: 'Jack Freegard',
 		role: 'MD of TYX Studios',
+		clientLogo: '/images/vaqa/clients/tyx-studios.png',
+		clientName: 'TYX Studios',
 	},
 	{
 		quote:
 			"From the outset, it was clear that Tom's ability to grasp our business and priorities quickly was going to be a game changer. Offering strong strategic advice was icing on the cake.",
 		name: 'Frederic de Ryckman de Betz',
 		role: 'CEO and Founder, HOLD Self Storage',
+		clientLogo: '/images/vaqa/clients/hold-self-storage.png',
+		clientName: 'HOLD Self Storage',
 	},
 	{
 		quote:
 			"Tom is like another founder, always there when we need him with the ability to deliver results that exceed our expectations.",
 		name: 'Tom Cledwyn',
 		role: 'Founder & CEO, Drop Dead Generous',
+		clientLogo: '/images/vaqa/clients/drop-dead-generous.png',
+		clientName: 'Drop Dead Generous',
+	},
+];
+
+const reasons = [
+	{
+		title: 'Founder experience',
+		body: "I've built and scaled startups, including Obby and Baluu, and now advise disruptive founders on strategy and growth.",
+		image: '/images/vaqa/photography/office-1.jpg',
+	},
+	{
+		title: 'Practical insight',
+		body: 'I combine hands-on operating experience with board-level advisory for SaaS, marketplaces and digital businesses.',
+		image: '/images/vaqa/photography/office-2.jpg',
+	},
+	{
+		title: 'Clear outcomes',
+		body: 'I help leadership teams focus on what matters — go-to-market, pricing, fundraising narratives, and execution.',
+		image: '/images/vaqa/photography/office-4.jpg',
 	},
 ];
 ---
@@ -34,28 +60,55 @@ const testimonials = [
 		<!-- Hero: solid yellow field, per brand guidelines -->
 		<section style="background:var(--vaqa-yellow);">
 			<div
-				class="mx-auto max-w-[var(--container-max)]"
-				style="padding:var(--space-11) var(--gutter) var(--space-10);"
+				class="mx-auto grid max-w-[var(--container-max)] items-center gap-[var(--grid-gap)]"
+				style="padding:var(--space-11) var(--gutter) var(--space-10);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));"
 			>
-				<Eyebrow client:load>Advisory</Eyebrow>
-				<h1
-					class="mt-4 max-w-3xl"
-					style="font-size:var(--text-display-2);color:var(--vaqa-ink);"
+				<div>
+					<Eyebrow client:load>Advisory</Eyebrow>
+					<h1
+						class="mt-4 max-w-xl"
+						style="font-size:var(--text-display-2);color:var(--vaqa-ink);"
+					>
+						Straight-talking advice for founders and leadership teams
+					</h1>
+					<p
+						class="mt-6 max-w-xl"
+						style="font-size:var(--text-body-lg);font-weight:var(--weight-light);line-height:var(--leading-loose);color:var(--vaqa-ink);"
+					>
+						I'm Tom Batting — a Forbes 30 Under 30 founder who has built, scaled and
+						exited startups including Obby and Baluu. I now advise leadership teams on
+						board strategy, growth, go-to-market, AI implementation, operational
+						efficiency and finance and fundraising.
+					</p>
+					<div class="mt-8 flex flex-wrap items-center gap-5">
+						<Button client:load variant="primary" href="mailto:tom@vaqa.co.uk">Get in touch</Button>
+						<Button client:load variant="outline" href="/advisory">See what I advise on</Button>
+					</div>
+				</div>
+				<MediaFrame
+					client:load
+					src="/images/vaqa/portrait/tom-headshot.jpg"
+					alt="Tom Batting"
+					ratio="4 / 5"
+					style={{ maxWidth: '420px', justifySelf: 'center' }}
+				/>
+			</div>
+		</section>
+
+		<!-- Why work with me -->
+		<section style="background:var(--surface-page);">
+			<div
+				class="mx-auto max-w-[var(--container-max)]"
+				style="padding:var(--section-y) var(--gutter);"
+			>
+				<SectionHeading client:load eyebrow="Why work with me" title="An operator's perspective, not just an advisor's" />
+				<div
+					class="mt-10 grid gap-[var(--grid-gap)]"
+					style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));"
 				>
-					Straight-talking advice for founders and leadership teams
-				</h1>
-				<p
-					class="mt-6 max-w-2xl"
-					style="font-size:var(--text-body-lg);font-weight:var(--weight-light);line-height:var(--leading-loose);color:var(--vaqa-ink);"
-				>
-					I'm Tom Batting — a Forbes 30 Under 30 founder who has built, scaled and exited
-					startups including Obby and Baluu. I now advise leadership teams on board
-					strategy, growth, go-to-market, AI implementation, operational efficiency and
-					finance and fundraising.
-				</p>
-				<div class="mt-8 flex flex-wrap items-center gap-5">
-					<Button client:load variant="primary" href="mailto:tom@vaqa.co.uk">Get in touch</Button>
-					<Button client:load variant="outline" href="/advisory">See what I advise on</Button>
+					{reasons.map((r) => (
+						<ValueCard client:load title={r.title} body={r.body} image={r.image} imageAlt={r.title} />
+					))}
 				</div>
 			</div>
 		</section>
@@ -95,9 +148,29 @@ const testimonials = [
 					style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));"
 				>
 					{testimonials.map((t) => (
-						<Testimonial client:load quote={t.quote} name={t.name} role={t.role} />
+						<Testimonial
+							client:load
+							quote={t.quote}
+							name={t.name}
+							role={t.role}
+							clientLogo={t.clientLogo}
+							clientName={t.clientName}
+						/>
 					))}
 				</div>
+			</div>
+		</section>
+
+		<!-- Closing CTA band -->
+		<section style="background:var(--surface-inverse);">
+			<div
+				class="mx-auto flex max-w-[var(--container-max)] flex-wrap items-center justify-between gap-6"
+				style="padding:var(--space-9) var(--gutter);"
+			>
+				<h2 style="font-size:var(--text-h2);color:var(--text-inverse);max-width:32ch;">
+					Let's talk about what's next for your business
+				</h2>
+				<Button client:load variant="brand" href="mailto:tom@vaqa.co.uk">Get in touch</Button>
 			</div>
 		</section>
 	</main>

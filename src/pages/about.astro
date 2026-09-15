@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { SectionHeading } from '../design-system/components/core/SectionHeading.jsx';
+import { MediaFrame } from '../design-system/components/content/MediaFrame.jsx';
 ---
 
 <Layout
@@ -10,33 +11,43 @@ import { SectionHeading } from '../design-system/components/core/SectionHeading.
 	<main>
 		<section style="background:var(--surface-page);">
 			<div
-				class="mx-auto max-w-[var(--container-narrow)]"
-				style="padding:var(--space-10) var(--gutter) var(--section-y);"
+				class="mx-auto grid max-w-[var(--container-max)] gap-[var(--grid-gap)]"
+				style="padding:var(--space-10) var(--gutter) var(--section-y);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));"
 			>
-				<SectionHeading client:load eyebrow="About" title="About Tom" />
-				<div
-					class="mt-8 flex flex-col gap-6"
-					style="font-size:var(--text-body-lg);font-weight:var(--weight-light);line-height:var(--leading-loose);color:var(--text-secondary);"
-				>
-					<p>
-						Tom Batting is a Forbes 30 Under 30 entrepreneur and the founder of Obby and
-						Baluu, two high-growth platforms that were successfully scaled and acquired.
-					</p>
-					<p>
-						I advise founders and leadership teams on board strategy, growth,
-						go-to-market, AI implementation, operational efficiency, and finance and
-						fundraising. My focus is on clarity and outcomes, drawing on first-hand
-						experience of building, scaling and exiting my own ventures.
-					</p>
-					<p>
-						I combine big-picture thinking with practical, operator-level insight — and
-						I'm not afraid to get into the detail when it matters.
-					</p>
-					<p>
-						Outside of work, I'm a proud father of four and a big fan of LEGO,
-						snowsports, padel tennis, and discovering great food.
-					</p>
+				<div style="max-width:var(--container-narrow);">
+					<SectionHeading client:load eyebrow="About" title="About Tom" />
+					<div
+						class="mt-8 flex flex-col gap-6"
+						style="font-size:var(--text-body-lg);font-weight:var(--weight-light);line-height:var(--leading-loose);color:var(--text-secondary);"
+					>
+						<p>
+							Tom Batting is a Forbes 30 Under 30 entrepreneur and the founder of Obby
+							and Baluu, two high-growth platforms that were successfully scaled and
+							acquired.
+						</p>
+						<p>
+							I advise founders and leadership teams on board strategy, growth,
+							go-to-market, AI implementation, operational efficiency, and finance and
+							fundraising. My focus is on clarity and outcomes, drawing on first-hand
+							experience of building, scaling and exiting my own ventures.
+						</p>
+						<p>
+							I combine big-picture thinking with practical, operator-level insight —
+							and I'm not afraid to get into the detail when it matters.
+						</p>
+						<p>
+							Outside of work, I'm a proud father of four and a big fan of LEGO,
+							snowsports, padel tennis, and discovering great food.
+						</p>
+					</div>
 				</div>
+				<MediaFrame
+					client:load
+					src="/images/vaqa/portrait/tom-headshot.jpg"
+					alt="Tom Batting"
+					ratio="4 / 5"
+					style={{ maxWidth: '420px', justifySelf: 'center' }}
+				/>
 			</div>
 		</section>
 	</main>
