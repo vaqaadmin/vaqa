@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { SectionHeading } from '../../design-system/components/core/SectionHeading.jsx';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -14,28 +15,48 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' });
 	description="Opinions on AI, growth, and building businesses from Tom Batting."
 >
 	<main>
-		<section class="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
-			<h1 class="font-sans text-4xl font-semibold tracking-tight text-vaqa-ink sm:text-5xl">
-				Blog
-			</h1>
-			<p class="mt-6 font-sans text-lg text-vaqa-ink/70">
-				Opinions on what's happening in AI, and other industries I keep an eye on.
-			</p>
+		<section style="background:var(--surface-page);">
+			<div
+				class="mx-auto max-w-[var(--container-narrow)]"
+				style="padding:var(--space-10) var(--gutter) var(--space-6);"
+			>
+				<SectionHeading
+					client:load
+					eyebrow="Blog"
+					title="Opinions on AI, and everything else"
+					lede="Where I write about what's happening in AI, and other industries I keep an eye on."
+				/>
+			</div>
 		</section>
 
-		<section class="mx-auto max-w-3xl divide-y divide-vaqa-ink/10 border-t border-vaqa-ink/10 px-6 pb-24">
+		<section
+			class="mx-auto max-w-[var(--container-narrow)]"
+			style="padding:0 var(--gutter) var(--section-y);border-top:var(--border-hairline) solid var(--border-subtle);"
+		>
 			{posts.length === 0 && (
-				<p class="py-12 font-sans text-vaqa-ink/60">No posts yet — check back soon.</p>
+				<p style="padding:var(--space-6) 0;color:var(--text-muted);">No posts yet — check back soon.</p>
 			)}
 			{posts.map((post) => (
-				<a href={`/blog/${post.id}`} class="group block py-8">
-					<p class="font-sans text-sm text-vaqa-ink/50">
+				<a
+					href={`/blog/${post.id}`}
+					class="group block"
+					style="padding:var(--space-6) 0;border-bottom:var(--border-hairline) solid var(--border-subtle);text-decoration:none;"
+				>
+					<p style="font-size:var(--text-caption);color:var(--text-muted);">
 						{dateFormatter.format(post.data.pubDate)}
 					</p>
-					<h2 class="mt-2 font-sans text-xl font-semibold text-vaqa-ink group-hover:text-vaqa-teal">
+					<h2
+						class="mt-1 group-hover:opacity-70"
+						style="font-size:var(--text-h3);color:var(--text-primary);"
+					>
 						{post.data.title}
 					</h2>
-					<p class="mt-2 font-sans text-vaqa-ink/70">{post.data.description}</p>
+					<p
+						class="mt-2"
+						style="font-weight:var(--weight-light);line-height:var(--leading-loose);color:var(--text-secondary);"
+					>
+						{post.data.description}
+					</p>
 				</a>
 			))}
 		</section>

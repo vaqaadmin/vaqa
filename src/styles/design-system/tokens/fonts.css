@@ -1,0 +1,5 @@
+/* F37 Ginger — supplied by VAQA (F37 Foundry, licensed). Only these 4 cuts exist in the project. */
+@font-face{font-family:"F37 Ginger";src:url("/fonts/vaqa/F37Ginger-Light.woff") format("woff");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"F37 Ginger";src:url("/fonts/vaqa/F37Ginger-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"F37 Ginger";src:url("/fonts/vaqa/F37Ginger-RegularItalic.woff") format("woff");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"F37 Ginger";src:url("/fonts/vaqa/F37Ginger-Bold.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}

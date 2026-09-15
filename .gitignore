@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw Claude Design project export (reference only; the parts actually used
+# by the site live under src/design-system/ and ARE tracked)
+/design-system/
