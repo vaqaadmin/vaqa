@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 import { advisoryTopics } from '../data/advisory.ts';
 import { SectionHeading } from '../design-system/components/core/SectionHeading.jsx';
 import { Button } from '../design-system/components/core/Button.jsx';
@@ -8,6 +9,19 @@ import { TopicCard } from '../design-system/components/content/TopicCard.jsx';
 import { Testimonial } from '../design-system/components/content/Testimonial.jsx';
 import { MediaFrame } from '../design-system/components/content/MediaFrame.jsx';
 import { ValueCard } from '../design-system/components/content/ValueCard.jsx';
+import { InsightCard } from '../design-system/components/content/InsightCard.jsx';
+
+const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' });
+
+const latestInsights = (await getCollection('blog', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3)
+	.map((post) => ({
+		title: post.data.title,
+		body: post.data.description,
+		date: dateFormatter.format(post.data.pubDate),
+		href: `/blog/${post.id}`,
+	}));
 
 const testimonials = [
 	{
@@ -157,6 +171,27 @@ const reasons = [
 							clientLogo={t.clientLogo}
 							clientName={t.clientName}
 						/>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Latest insights -->
+		<section style="background:var(--surface-muted);">
+			<div
+				class="mx-auto max-w-[var(--container-max)]"
+				style="padding:var(--section-y) var(--gutter);"
+			>
+				<div class="flex flex-wrap items-end justify-between gap-6">
+					<SectionHeading client:load eyebrow="Blog" title="Latest insights" />
+					<Button client:load variant="outline" href="/blog">See all insights</Button>
+				</div>
+				<div
+					class="mt-10 grid gap-[var(--grid-gap)]"
+					style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));"
+				>
+					{latestInsights.map((post) => (
+						<InsightCard client:load href={post.href} title={post.title} body={post.body} date={post.date} />
 					))}
 				</div>
 			</div>
