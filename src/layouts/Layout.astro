@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
 	title?: string;
@@ -7,8 +9,8 @@ interface Props {
 }
 
 const {
-	title = 'VAQA',
-	description = 'VAQA',
+	title = 'Tom Batting — Board Advisory, Growth & AI Implementation',
+	description = 'Board advisory, growth, go-to-market, AI implementation, operational efficiency, and fundraising advice from Tom Batting.',
 } = Astro.props;
 ---
 
@@ -21,7 +23,9 @@ const {
 		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-white font-sans text-vaqa-ink antialiased">
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>

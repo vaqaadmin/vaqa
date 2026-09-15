@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const dateFormatter = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' });
+---
+
+<Layout
+	title="Blog | Tom Batting"
+	description="Opinions on AI, growth, and building businesses from Tom Batting."
+>
+	<main>
+		<section class="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
+			<h1 class="font-sans text-4xl font-semibold tracking-tight text-vaqa-ink sm:text-5xl">
+				Blog
+			</h1>
+			<p class="mt-6 font-sans text-lg text-vaqa-ink/70">
+				Opinions on what's happening in AI, and other industries I keep an eye on.
+			</p>
+		</section>
+
+		<section class="mx-auto max-w-3xl divide-y divide-vaqa-ink/10 border-t border-vaqa-ink/10 px-6 pb-24">
+			{posts.length === 0 && (
+				<p class="py-12 font-sans text-vaqa-ink/60">No posts yet — check back soon.</p>
+			)}
+			{posts.map((post) => (
+				<a href={`/blog/${post.id}`} class="group block py-8">
+					<p class="font-sans text-sm text-vaqa-ink/50">
+						{dateFormatter.format(post.data.pubDate)}
+					</p>
+					<h2 class="mt-2 font-sans text-xl font-semibold text-vaqa-ink group-hover:text-vaqa-teal">
+						{post.data.title}
+					</h2>
+					<p class="mt-2 font-sans text-vaqa-ink/70">{post.data.description}</p>
+				</a>
+			))}
+		</section>
+	</main>
+</Layout>

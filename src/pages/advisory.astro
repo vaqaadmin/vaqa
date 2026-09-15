@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { advisoryTopics } from '../data/advisory.ts';
+---
+
+<Layout
+	title="Advisory | Tom Batting"
+	description="Board advisory, growth, go-to-market, AI implementation, operational efficiency, and finance & fundraising advice from Tom Batting."
+>
+	<main>
+		<section class="mx-auto max-w-5xl px-6 pt-20 pb-12 sm:pt-28">
+			<h1 class="font-sans text-4xl font-semibold tracking-tight text-vaqa-ink sm:text-5xl">
+				Advisory
+			</h1>
+			<p class="mt-6 max-w-2xl font-sans text-lg text-vaqa-ink/70">
+				I work with founders and leadership teams across six areas — drawing on first-hand
+				experience building, scaling, and exiting my own ventures.
+			</p>
+		</section>
+
+		<section class="mx-auto max-w-5xl divide-y divide-vaqa-ink/10 border-t border-vaqa-ink/10 px-6">
+			{advisoryTopics.map((topic) => (
+				<div id={topic.slug} class="scroll-mt-24 py-12">
+					<h2 class="font-sans text-2xl font-semibold text-vaqa-ink">{topic.title}</h2>
+					<p class="mt-4 max-w-2xl font-sans text-vaqa-ink/70">{topic.description}</p>
+				</div>
+			))}
+		</section>
+	</main>
+</Layout>

@@ -1,9 +1,91 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { advisoryTopics } from '../data/advisory.ts';
+
+const testimonials = [
+	{
+		quote:
+			'Tom has been a game changer for TYX Studios! Since working with him and his partners, we’ve seen a remarkable boost in visibility and a steady flow of high-intent enquiries leading to some amazing customers.',
+		name: 'Jack Freegard',
+		role: 'MD of TYX Studios',
+	},
+	{
+		quote:
+			'From the outset, it was clear that Tom’s ability to grasp our business and priorities quickly was going to be a game changer. Offering strong strategic advice was icing on the cake.',
+		name: 'Frederic de Ryckman de Betz',
+		role: 'CEO and Founder, HOLD Self Storage',
+	},
+	{
+		quote:
+			'Tom is like another founder, always there when we need him with the ability to deliver results that exceed our expectations.',
+		name: 'Tom Cledwyn',
+		role: 'Founder & CEO, Drop Dead Generous',
+	},
+];
 ---
 
 <Layout>
-	<main class="min-h-screen bg-vaqa-grey flex items-center justify-center">
-		<h1 class="font-sans text-4xl font-semibold text-vaqa-ink">VAQA</h1>
+	<main>
+		<!-- Hero -->
+		<section class="mx-auto max-w-5xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-24">
+			<p class="font-sans text-sm font-medium uppercase tracking-wide text-vaqa-teal">
+				Advisory
+			</p>
+			<h1 class="mt-4 max-w-3xl font-sans text-4xl font-semibold tracking-tight text-vaqa-ink sm:text-5xl">
+				Straight-talking advice for founders and leadership teams
+			</h1>
+			<p class="mt-6 max-w-2xl font-sans text-lg text-vaqa-ink/70">
+				I'm Tom Batting — a Forbes 30 Under 30 founder who has built, scaled, and exited
+				startups including Obby and Baluu. I now advise leadership teams on board strategy,
+				growth, go-to-market, AI implementation, operational efficiency, and fundraising.
+			</p>
+			<div class="mt-8 flex flex-wrap items-center gap-4">
+				<a
+					href="mailto:tom@vaqa.co.uk"
+					class="rounded-full bg-vaqa-ink px-6 py-3 font-sans text-sm font-medium text-white transition-colors hover:bg-vaqa-teal"
+				>
+					Get in touch
+				</a>
+				<a
+					href="/advisory"
+					class="font-sans text-sm font-medium text-vaqa-ink underline underline-offset-4 hover:text-vaqa-teal"
+				>
+					See what I advise on
+				</a>
+			</div>
+		</section>
+
+		<!-- Advisory topics -->
+		<section class="border-t border-vaqa-ink/10 bg-vaqa-grey">
+			<div class="mx-auto max-w-5xl px-6 py-20">
+				<h2 class="font-sans text-2xl font-semibold text-vaqa-ink">What I advise on</h2>
+				<div class="mt-10 grid gap-8 sm:grid-cols-2">
+					{advisoryTopics.map((topic) => (
+						<a href={`/advisory#${topic.slug}`} class="group block">
+							<h3 class="font-sans text-lg font-semibold text-vaqa-ink group-hover:text-vaqa-teal">
+								{topic.title}
+							</h3>
+							<p class="mt-2 font-sans text-vaqa-ink/70">{topic.summary}</p>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonials -->
+		<section class="mx-auto max-w-5xl px-6 py-20">
+			<h2 class="font-sans text-2xl font-semibold text-vaqa-ink">What people say</h2>
+			<div class="mt-10 grid gap-8 sm:grid-cols-3">
+				{testimonials.map((t) => (
+					<figure class="flex flex-col justify-between rounded-2xl border border-vaqa-ink/10 p-6">
+						<blockquote class="font-sans text-sm text-vaqa-ink/80">"{t.quote}"</blockquote>
+						<figcaption class="mt-6 font-sans text-sm">
+							<span class="block font-medium text-vaqa-ink">{t.name}</span>
+							<span class="text-vaqa-ink/60">{t.role}</span>
+						</figcaption>
+					</figure>
+				))}
+			</div>
+		</section>
 	</main>
 </Layout>

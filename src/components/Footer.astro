@@ -1,0 +1,31 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-vaqa-ink/10 bg-vaqa-grey">
+	<div class="mx-auto max-w-5xl px-6 py-16">
+		<div class="flex flex-col items-start gap-4">
+			<h2 class="font-sans text-2xl font-semibold text-vaqa-ink">Let's talk</h2>
+			<p class="max-w-md font-sans text-vaqa-ink/70">
+				The best way to reach me is directly by email. Tell me what you're working on and
+				I'll get back to you.
+			</p>
+			<a
+				href="mailto:tom@vaqa.co.uk"
+				class="font-sans text-lg font-medium text-vaqa-teal underline underline-offset-4 hover:text-vaqa-ink"
+			>
+				tom@vaqa.co.uk
+			</a>
+		</div>
+		<div
+			class="mt-16 flex flex-col-reverse items-start justify-between gap-4 border-t border-vaqa-ink/10 pt-8 font-sans text-sm text-vaqa-ink/50 sm:flex-row sm:items-center"
+		>
+			<p>&copy; {year} Tom Batting. All rights reserved.</p>
+			<nav class="flex gap-6">
+				<a href="/advisory" class="hover:text-vaqa-ink">Advisory</a>
+				<a href="/about" class="hover:text-vaqa-ink">About</a>
+				<a href="/blog" class="hover:text-vaqa-ink">Blog</a>
+			</nav>
+		</div>
+	</div>
+</footer>
