@@ -1,5 +1,5 @@
 ---
-title: "Enterprise AI Rollouts Fail On Change Management Not Model Quality"
+title: "Enterprise AI Fails on Change Management, Not Models"
 description: "Every enterprise AI playbook obsesses over model choice, but I think the real failure point is buy-in and workflow redesign, and that's the wrong focus."
 pubDate: 2026-01-12
 tags: ["ai-implementation", "operational-efficiency"]

@@ -1,6 +1,6 @@
 ---
 title: "AI Browsers Will Kill the Ten Blue Links Growth Model"
-description: "Once agent-driven browsing goes mainstream, content built only for human scanning stops working, and a strategy measured on rankings alone is already out of date."
+description: "Once agent-driven browsing goes mainstream, content built only for human scanning stops working, and ranking-only strategies are already out of date."
 pubDate: 2026-08-04
 tags: ["ai-implementation", "growth"]
 ---

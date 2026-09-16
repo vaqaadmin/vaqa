@@ -1,5 +1,5 @@
 ---
-title: "If Your AI Costs Are Rising Every Year, You're Procuring It Wrong"
+title: "Rising AI Costs Mean You're Procuring It Wrong"
 description: "Model prices keep falling while capability keeps rising, so a growing AI bill isn't inevitable. It's a procurement habit worth fixing."
 pubDate: 2026-01-27
 tags: ["finance-and-fundraising", "operational-efficiency"]

@@ -1,5 +1,5 @@
 ---
-title: "Six Person Startups Beating Incumbents Kills Hire Ahead Of Growth"
+title: "Lean Teams Beat Incumbents: Stop Hiring Ahead of Growth"
 description: "Headcount used to signal momentum to a board. I think AI leverage has flipped that, and lean should now be the default, not the exception."
 pubDate: 2025-12-03
 tags: ["operational-efficiency", "growth"]
