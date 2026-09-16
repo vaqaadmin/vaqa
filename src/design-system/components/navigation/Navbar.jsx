@@ -6,17 +6,39 @@ const LINK={fontSize:"var(--text-label)",letterSpacing:"var(--tracking-label)",t
 fontWeight:"var(--weight-bold)",textDecoration:"none"};
 export function Navbar({links=[],cta,ctaHref="#contact",tone="light",assetBase="/images/vaqa",homeHref="/",onNavigate,style,...rest}){
   const inverse=tone==="ink";
-  return <header style={{position:"sticky",top:0,zIndex:40,display:"flex",alignItems:"center",justifyContent:"space-between",gap:"var(--space-6)",
-    padding:"var(--space-5) var(--gutter)",background:inverse?"var(--surface-inverse)":"var(--surface-page)",
-    borderBottom:"var(--border-hairline) solid "+(inverse?"var(--border-on-inverse)":"var(--border-subtle)"),...style}} {...rest}>
-    <a href={homeHref} onClick={onNavigate?e=>{e.preventDefault();onNavigate(homeHref);}:undefined} style={{display:"flex"}}>
-      <Logo variant={inverse?"light":"dark"} height={24} assetBase={assetBase}/></a>
-    <nav style={{display:"flex",alignItems:"center",gap:"var(--space-6)"}}>
-      {links.map(l=><a key={l.href} href={l.href}
-        onClick={onNavigate?e=>{e.preventDefault();onNavigate(l.href);}:undefined}
-        style={{...LINK,color:inverse?"var(--text-inverse)":"var(--text-primary)"}}>{l.label}</a>)}
-      {cta?<Button variant={inverse?"brand":"primary"} size="sm" href={ctaHref}
-        onClick={onNavigate?e=>{e.preventDefault();onNavigate(ctaHref);}:undefined}>{cta}</Button>:null}
-    </nav>
+  const [open,setOpen]=React.useState(false);
+  const linkColor=inverse?"var(--text-inverse)":"var(--text-primary)";
+  const borderColor=inverse?"var(--border-on-inverse)":"var(--border-subtle)";
+  const go=(href)=>(e)=>{
+    setOpen(false);
+    if(onNavigate){e.preventDefault();onNavigate(href);}
+  };
+  return <header style={{position:"sticky",top:0,zIndex:40,
+    background:inverse?"var(--surface-inverse)":"var(--surface-page)",
+    borderBottom:"var(--border-hairline) solid "+borderColor,...style}} {...rest}>
+    <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"var(--space-6)",
+      padding:"var(--space-5) var(--gutter)"}}>
+      <a href={homeHref} onClick={go(homeHref)} style={{display:"flex"}}>
+        <Logo variant={inverse?"light":"dark"} height={24} assetBase={assetBase}/></a>
+      <nav className="hidden md:flex" style={{alignItems:"center",gap:"var(--space-6)"}}>
+        {links.map(l=><a key={l.href} href={l.href} onClick={go(l.href)}
+          style={{...LINK,color:linkColor}}>{l.label}</a>)}
+        {cta?<Button variant={inverse?"brand":"primary"} size="sm" href={ctaHref}
+          onClick={go(ctaHref)}>{cta}</Button>:null}
+      </nav>
+      <button type="button" className="md:hidden" aria-expanded={open} aria-label="Toggle menu"
+        onClick={()=>setOpen((o)=>!o)}
+        style={{...LINK,color:linkColor,background:"none",border:0,padding:0,cursor:"pointer"}}>
+        {open?"Close":"Menu"}
+      </button>
+    </div>
+    {open?<nav className="md:hidden" style={{display:"flex",flexDirection:"column",gap:"var(--space-5)",
+      padding:"var(--space-1) var(--gutter) var(--space-6)",
+      borderTop:"var(--border-hairline) solid "+borderColor}}>
+      {links.map(l=><a key={l.href} href={l.href} onClick={go(l.href)}
+        style={{...LINK,color:linkColor,paddingTop:"var(--space-4)"}}>{l.label}</a>)}
+      {cta?<Button variant={inverse?"brand":"primary"} size="sm" href={ctaHref} onClick={go(ctaHref)}
+        style={{alignSelf:"flex-start",marginTop:"var(--space-2)"}}>{cta}</Button>:null}
+    </nav>:null}
   </header>;
 }
