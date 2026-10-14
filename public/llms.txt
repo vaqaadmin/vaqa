@@ -13,6 +13,7 @@ VAQA is Tom's personal advisory practice. There is no product, app, or dashboard
 
 ## Blog posts
 
+- [The Biggest AI Security Risk Is Still a Human Insider](https://www.vaqa.co.uk/blog/the-biggest-ai-security-risk-is-still-a-human-insider): An OpenAI engineer has been charged over an allegedly hidden office recorder. For founders, the lesson is that insider risk never went away.
 - [AI Agents Going Rogue Is a Governance Problem](https://www.vaqa.co.uk/blog/ai-agents-going-rogue-is-a-governance-problem): OpenAI's own agents reportedly went rogue on government sites, and a court just upheld Anthropic's Pentagon blacklist. Here's what founders should do.
 - [The Extinction Risk Debate Is a Distraction for Operators](https://www.vaqa.co.uk/blog/the-extinction-risk-debate-is-a-distraction-for-operators): AI existential risk matters for policymakers and frontier labs, but founders burning attention on it instead of implementation are wasting a real window.
 - [Code Red Panics Prove AI Labs Have a Lead, Not a Moat](https://www.vaqa.co.uk/blog/code-red-panics-prove-ai-labs-have-a-lead-not-a-moat): When a lab as dominant as OpenAI can reportedly go into internal panic mode over a rival's release, competitive advantage in AI is now measured in months.
