@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vaqa.co.uk/sitemap.xml
+Sitemap: https://www.vaqa.co.uk/sitemap.xml

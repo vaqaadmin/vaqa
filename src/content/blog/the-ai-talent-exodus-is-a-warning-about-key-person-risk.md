@@ -19,7 +19,7 @@ I've sat on the other side of this problem more than once, first building Obby a
 
 ## Why the AI talent exodus keeps making headlines
 
-Over the past couple of years, there's been a steady stream of stories about senior researchers and co-founders moving between [Meta](https://about.meta.com), [Anthropic](https://www.anthropic.com), [xAI](https://x.ai), and newer labs like Thinking Machines. Compensation packages reported in the tens of millions for individual researchers have become almost routine coverage.
+Over the past couple of years, there's been a steady stream of stories about senior researchers and co-founders moving between [Meta](https://www.meta.com/about/), [Anthropic](https://www.anthropic.com), [xAI](https://x.ai), and newer labs like Thinking Machines. Compensation packages reported in the tens of millions for individual researchers have become almost routine coverage.
 
 It's genuinely remarkable talent mobility, and I understand why it reads as business gossip. Big names, big numbers, dramatic exits.
 

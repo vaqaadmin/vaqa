@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://vaqa.co.uk',
+  site: 'https://www.vaqa.co.uk',
   integrations: [react()],
 
   vite: {

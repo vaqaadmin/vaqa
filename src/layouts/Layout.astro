@@ -22,7 +22,9 @@ const {
 	schema = [],
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteUrl = new URL('/', Astro.site).origin;
+const canonicalPath = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/$/, '') : '/';
+const canonicalURL = new URL(canonicalPath, Astro.site);
 const absoluteOgImage = new URL(ogImage, Astro.site);
 
 const siteSchema = {
@@ -30,27 +32,27 @@ const siteSchema = {
 	'@graph': [
 		{
 			'@type': 'Person',
-			'@id': 'https://vaqa.co.uk/#person',
+			'@id': `${siteUrl}/#person`,
 			name: 'Tom Batting',
-			url: 'https://vaqa.co.uk',
-			image: 'https://vaqa.co.uk/images/vaqa/portrait/tom-headshot.jpg',
+			url: siteUrl,
+			image: `${siteUrl}/images/vaqa/portrait/tom-headshot.jpg`,
 			jobTitle: 'Founder and Advisor',
 			description:
 				'Forbes 30 Under 30 entrepreneur, founder of Obby and Baluu, founder of FirstMotion, and advisor to founders and leadership teams through VAQA.',
 			email: 'mailto:tom@vaqa.co.uk',
 			worksFor: [
-				{ '@type': 'Organization', name: 'VAQA', url: 'https://vaqa.co.uk' },
+				{ '@type': 'Organization', name: 'VAQA', url: siteUrl },
 				{ '@type': 'Organization', name: 'FirstMotion', url: 'https://firstmotion.com' },
 			],
 			sameAs: ['https://firstmotion.com'],
 		},
 		{
 			'@type': 'ProfessionalService',
-			'@id': 'https://vaqa.co.uk/#organization',
+			'@id': `${siteUrl}/#organization`,
 			name: 'VAQA',
-			url: 'https://vaqa.co.uk',
+			url: siteUrl,
 			email: 'tom@vaqa.co.uk',
-			founder: { '@id': 'https://vaqa.co.uk/#person' },
+			founder: { '@id': `${siteUrl}/#person` },
 			areaServed: 'Worldwide',
 			description:
 				'Board advisory, growth, go-to-market, AI implementation, operational efficiency, and finance and fundraising advisory led by Tom Batting.',

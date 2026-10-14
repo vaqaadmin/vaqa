@@ -41,8 +41,8 @@ const blogPostingSchema = {
 	dateModified: post.data.pubDate.toISOString(),
 	url: canonicalURL,
 	mainEntityOfPage: canonicalURL,
-	author: { '@id': 'https://vaqa.co.uk/#person' },
-	publisher: { '@id': 'https://vaqa.co.uk/#person' },
+	author: { '@id': new URL('/#person', Astro.site).toString() },
+	publisher: { '@id': new URL('/#person', Astro.site).toString() },
 	image: new URL('/images/vaqa/og-image.jpg', Astro.site).toString(),
 };
 

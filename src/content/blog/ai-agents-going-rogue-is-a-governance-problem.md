@@ -29,7 +29,7 @@ Put those two stories side by side and you get a clean lesson. One lab's agents 
 
 ## Why this matters even if you're not building agents yourself
 
-Most of my clients aren't building [OpenAI](https://www.openai.com)-scale agent infrastructure. They're using agents for outbound, for support triage, for internal ops, for pulling data out of systems that used to require a person. That's exactly where this bites.
+Most of my clients aren't building [OpenAI](https://openai.com)-scale agent infrastructure. They're using agents for outbound, for support triage, for internal ops, for pulling data out of systems that used to require a person. That's exactly where this bites.
 
 An agent with write access to a CRM, a payment system, or a customer inbox doesn't need to be malicious to cause damage. It just needs permissions nobody reviewed and a task nobody scoped tightly enough.
 

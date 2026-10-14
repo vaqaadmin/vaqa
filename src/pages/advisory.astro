@@ -24,7 +24,7 @@ const schema = [
 				'@type': 'Service',
 				name: topic.title,
 				description: topic.description,
-				provider: { '@id': 'https://vaqa.co.uk/#person' },
+				provider: { '@id': new URL('/#person', Astro.site).toString() },
 				url: new URL(`/advisory#${topic.slug}`, Astro.site).toString(),
 			},
 		})),
